@@ -4,36 +4,18 @@ body {
 	padding: 20px;
 }
 
-.time-display {
-	margin-top: 30px;
-	padding: 15px;
-	border-radius: 5px;
+main {
+	max-width: 1024px;
+	margin: 0 auto;
 }
 
-input[type='date'],
-input[type='range'] {
+input[type='date'] {
 	padding: 10px;
 	border-radius: 5px;
-	/* width: 100%; */
-	/* max-width: 300px; */
-}
-
-.inputs {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch; /* make children stretch to full width */
-	gap: 12px;
-}
-
-/* make immediate children of .inputs full width and include padding in width */
-.inputs > * {
-	width: 100%;
-	box-sizing: border-box;
 }
 
 /* ensure form controls expand to full width and respect padding */
 input[type='date'],
-input[type='range'],
 select,
 button,
 textarea {
@@ -44,42 +26,85 @@ textarea {
 	border-radius: 5px;
 }
 
-.outputs .visual {
+.outputs {
 	position: relative;
 	display: flex;
+	flex-direction: column-reverse;
+
 	align-items: center;
 	justify-content: space-between; /* first at start, last at end */
 	gap: 8px;
-	margin-bottom: 12px;
+	margin: 12px 0;
+	line-height: 1.5;
 }
 
-.outputs .diff,
-.outputs .fullDiff {
+.outputs .larger {
+	/* capture style attributes that need to be overridden
+	in the larger media query. also need to override the transforms
+	on .display.arrows */
+	flex-direction: row;
+	align-items: end;
+}
+
+.outputs > div:not(.input) {
+	margin-bottom: 10px;
+}
+
+.outputs .display.arrows {
 	display: flex;
-	gap: 12px;
-	border-right: 1px solid currentColor;
-	border-top: 1px solid currentColor;
-	border-bottom: 1px solid currentColor;
+	flex-direction: column;
+	align-items: center;
 }
 
-.outputs .fullDiff {
-	border-left: 1px solid currentColor;
+.outputs .display.arrows > *:first-child {
+	display: inline-block; /* ensures transform doesn't collapse layout */
+	transform: rotate(90deg);
+	transform-origin: center;
+	-webkit-transform: rotate(90deg);
+	-webkit-transform-origin: center;
 }
 
-.diff .layout,
-.fullDiff .layout {
-	flex: 1 1 0; /* equal width columns */
-	display: flex;
-	align-items: center; /* vertical center */
-	justify-content: center; /* horizontal center */
-	box-sizing: border-box;
-	padding: 8px; /* optional spacing inside each column */
-	min-height: 48px; /* optional — ensures visible area */
-	border-left: 1px solid currentColor;
+.outputs .display.arrows > *:last-child {
+	display: inline-block; /* ensures transform doesn't collapse layout */
+	transform: rotate(-90deg);
+	transform-origin: center;
+	-webkit-transform: rotate(-90deg);
+	-webkit-transform-origin: center;
 }
 
-/* ensure inner .display spans the layout and centers text */
-.diff .layout .display {
-	width: 100%;
+.centered {
 	text-align: center;
+}
+
+.formattedDate {
+	font-size: 1.4;
+	font-weight: bold;
+}
+
+@media (min-width: 700px) {
+	/* layout becomes horizontal on wider screens */
+	.outputs {
+		flex-direction: row;
+		align-items: end;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	/* place arrow elements side-by-side and undo small-screen rotation */
+	.outputs .display.arrows {
+		flex-direction: row;
+		white-space: nowrap;
+	}
+
+	.outputs .display.arrows > *:first-child,
+	.outputs .display.arrows > *:last-child {
+		transform: none;
+		-webkit-transform: none;
+		margin: 0 0.25em;
+	}
+
+	/* increase formatted date size on larger screens */
+	.formattedDate {
+		font-size: 1.4rem;
+	}
 }
