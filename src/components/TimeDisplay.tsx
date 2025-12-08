@@ -23,16 +23,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 	pastDate = defaultPastDate,
 	onPastDateChange,
 }) => {
-	if (!currentDate || !pastDate) {
-		console.warn('TimeDisplay: currentDate or pastDate is undefined', { currentDate, pastDate });
-		return (
-			<div>
-				<h2>Time Difference</h2>
-				<p>Missing date(s) — ensure both currentDate and pastDate props are provided.</p>
-			</div>
-		);
-	}
-
+	// Hooks must run unconditionally
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const isEditingRef = useRef(false);
 	const [editValue, setEditValue] = useState(() => formatIso(pastDate));
@@ -95,6 +86,17 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 			setEditValue(formatIso(pastDate));
 		}
 	};
+
+	// safe early return after hooks
+	if (!currentDate || !pastDate) {
+		console.warn('TimeDisplay: currentDate or pastDate is undefined', { currentDate, pastDate });
+		return (
+			<div>
+				<h2>Time Difference</h2>
+				<p>Missing date(s) — ensure both currentDate and pastDate props are provided.</p>
+			</div>
+		);
+	}
 
 	const timeDifference = Math.abs(currentDate.getTime() - pastDate.getTime());
 	const pastTime = new Date(pastDate.getTime() - timeDifference);
