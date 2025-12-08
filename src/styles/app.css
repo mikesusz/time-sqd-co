@@ -1,5 +1,18 @@
+:root {
+	/* responsive base font size: clamps between 18px and 20px, grows with viewport */
+	--base-font-size: clamp(18px, 1.2vw + 16px, 20px);
+}
+
+html {
+	/* set root font-size from variable so rem units scale site-wide */
+	font-size: var(--base-font-size);
+	-webkit-text-size-adjust: 100%;
+}
+
 body {
 	font-family: Arial, sans-serif;
+	/* use rem so this follows the root size */
+	font-size: 1rem;
 	margin: 0;
 	padding: 20px;
 }
@@ -12,6 +25,7 @@ main {
 input[type='date'] {
 	padding: 10px;
 	border-radius: 5px;
+	font-size: 0.8rem;
 }
 
 /* ensure form controls expand to full width and respect padding */
@@ -36,14 +50,6 @@ textarea {
 	gap: 8px;
 	margin: 12px 0;
 	line-height: 1.5;
-}
-
-.outputs .larger {
-	/* capture style attributes that need to be overridden
-	in the larger media query. also need to override the transforms
-	on .display.arrows */
-	flex-direction: row;
-	align-items: end;
 }
 
 .outputs > div:not(.input) {
@@ -74,7 +80,7 @@ textarea {
 	font-weight: bold;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 712px) {
 	/* layout becomes horizontal on wider screens */
 	.outputs {
 		flex-direction: row;
