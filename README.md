@@ -32,7 +32,6 @@ npm run serve
 - src/main.tsx — React entry; mounts the app.
 - src/App.tsx — top-level component; holds the targetDate state (defaults to Jan 1, 2000) and passes it into TimeDisplay.
 - src/components/TimeDisplay.tsx — main UI: shows pastTime, today, difference in days and includes the inline date input (date picker). Exposes `onPastDateChange?: (date: Date) => void` to update the parent state.
-- src/hooks/useTimeRange.ts — hook for computing human-friendly time differences (may be unused depending on current code path).
 - src/styles/app.css — application styles (controls layout, centering and sizing).
 - .gitignore — ignores node_modules.
 
