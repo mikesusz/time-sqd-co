@@ -1,64 +1,48 @@
-# Time Range SPA
+# time-sqd-co
 
-This is a single-page application that calculates and displays the time difference between the current date and a user-defined past date. It also shows the same amount of time prior to that past date.
+A small SPA to calculate and display time differences between dates. The UI lets you enter a past date (defaults to 2000‑01‑01) and shows the days between that date and today along with a symmetrical "equal days before" date.
 
-## Features
+## Quick start
 
-- Date selection using a date input.
-- Adjustable date using a slider.
-- Displays the time difference in a user-friendly format.
+Prerequisites
 
-## Project Structure
+- Node.js (14+ recommended)
+- npm or yarn
 
-```
-time-range-spa
-├── public
-│   └── index.html          # Main HTML file
-├── src
-│   ├── main.tsx           # Entry point for the React application
-│   ├── App.tsx            # Main App component
-│   ├── components          # Contains reusable components
-│   │   ├── DatePicker.tsx  # Date picker component
-│   │   ├── Slider.tsx      # Slider component for date adjustment
-│   │   └── TimeDisplay.tsx  # Component to display time differences
-│   ├── hooks               # Custom hooks
-│   │   └── useTimeRange.ts  # Hook for calculating time ranges
-│   ├── utils               # Utility functions
-│   │   └── time.ts         # Functions for time calculations
-│   └── styles              # CSS styles
-│       └── app.css         # Styles for the application
-├── package.json            # NPM configuration
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite configuration
-└── README.md               # Project documentation
+Install and run
+
+```bash
+# install
+npm install
+
+# dev server
+npm run dev
+
+# build for production
+npm run build
+
+# preview production build
+npm run serve
 ```
 
-## Setup Instructions
+## Project layout (important files)
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd time-range-spa
-   ```
+- package.json — project metadata and scripts.
+- index.html — Vite entry (loads `/src/main.tsx`).
+- src/main.tsx — React entry; mounts the app.
+- src/App.tsx — top-level component; holds the targetDate state (defaults to Jan 1, 2000) and passes it into TimeDisplay.
+- src/components/TimeDisplay.tsx — main UI: shows pastTime, today, difference in days and includes the inline date input (date picker). Exposes `onPastDateChange?: (date: Date) => void` to update the parent state.
+- src/hooks/useTimeRange.ts — hook for computing human-friendly time differences (may be unused depending on current code path).
+- src/styles/app.css — application styles (controls layout, centering and sizing).
+- .gitignore — ignores node_modules.
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+## Behavior / notes
 
-3. Start the development server:
-   ```
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:3000` to view the application.
-
-## Usage
-
-- Use the date picker to select a past date.
-- Adjust the date using the slider to see how the time difference changes.
-- The application will display the time difference between the current date and the selected past date, as well as the same amount of time prior to that date.
+- Default target/past date: Jan 1, 2000.
+- The inline date input uses a local edit string to avoid clobbering user typing mid-edit; commits to parent only when the browser reports a complete date or on blur.
+- valueAsDate / UTC handling: the app normalizes date inputs using UTC getters to avoid timezone-induced off-by-one-day issues.
+- Time formatting: dates rendered as short month (e.g. "Jan 1, 2000").
 
 ## License
 
-This project is licensed under the MIT License.
+MIT
