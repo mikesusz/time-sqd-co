@@ -100,7 +100,6 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 
 	// compute integer days and double it
 	const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-	const doubleDays = days * 2;
 
 	return (
 		<div className="outputs">
