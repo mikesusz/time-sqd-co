@@ -68,7 +68,7 @@ textarea {
 	display: inline-block; /* ensures transform doesn't collapse layout */
 	transform: rotate(-90deg);
 	transform-origin: center;
-	-webkit-transform: rotate(90deg);
+	-webkit-transform: rotate(-90deg);
 	-webkit-transform-origin: center;
 }
 
