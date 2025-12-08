@@ -33,6 +33,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 		);
 	}
 
+	const inputRef = useRef<HTMLInputElement | null>(null);
 	const isEditingRef = useRef(false);
 	const [editValue, setEditValue] = useState(() => formatIso(pastDate));
 
