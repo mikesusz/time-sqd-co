@@ -50,14 +50,24 @@ textarea {
 	align-items: center;
 	justify-content: space-between; /* first at start, last at end */
 	gap: 8px;
+	margin-bottom: 12px;
 }
 
-.diff {
+.outputs .diff,
+.outputs .fullDiff {
 	display: flex;
 	gap: 12px;
+	border-right: 1px solid currentColor;
+	border-top: 1px solid currentColor;
+	border-bottom: 1px solid currentColor;
 }
 
-.diff .layout {
+.outputs .fullDiff {
+	border-left: 1px solid currentColor;
+}
+
+.diff .layout,
+.fullDiff .layout {
 	flex: 1 1 0; /* equal width columns */
 	display: flex;
 	align-items: center; /* vertical center */
@@ -65,6 +75,7 @@ textarea {
 	box-sizing: border-box;
 	padding: 8px; /* optional spacing inside each column */
 	min-height: 48px; /* optional — ensures visible area */
+	border-left: 1px solid currentColor;
 }
 
 /* ensure inner .display spans the layout and centers text */

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 interface DatePickerProps {
 	targetDate: Date;
 	onDateChange: (date: Date) => void;
+	minYear?: number; // optional prop to control the range min
 }
 
 const formatIso = (d: Date) =>
@@ -11,7 +12,7 @@ const formatIso = (d: Date) =>
 		'0'
 	)}`;
 
-const DatePicker: React.FC<DatePickerProps> = ({ targetDate, onDateChange }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ targetDate, onDateChange, minYear }) => {
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const isEditingRef = useRef(false);
 
@@ -87,6 +88,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ targetDate, onDateChange }) => 
 
 	const currentYear = new Date().getFullYear();
 
+	// ensure min is sensible, never greater than currentYear, and never below 0
+	const effectiveMin = Math.max(0, Math.min(minYear ?? 1900, currentYear));
+
 	return (
 		<div className="inputs">
 			<div>
@@ -109,7 +113,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ targetDate, onDateChange }) => 
 					id="year-range"
 					type="range"
 					title="year"
-					min={1900}
+					min={effectiveMin}
 					max={currentYear}
 					value={targetDate.getFullYear()}
 					onChange={handleYearChange}

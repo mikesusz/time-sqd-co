@@ -45,10 +45,16 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 
 			<div className="diff">
 				<div className="layout">
-					<div className="display">{doubleDays} days</div>
+					<div className="display">{days} days</div>
 				</div>
 				<div className="layout">
 					<div className="display">{days} days</div>
+				</div>
+			</div>
+
+			<div className="fullDiff">
+				<div className="layout">
+					<div className="display">{doubleDays} days</div>
 				</div>
 			</div>
 
