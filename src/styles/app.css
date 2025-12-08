@@ -56,19 +56,12 @@ textarea {
 	align-items: center;
 }
 
-.outputs .display.arrows > *:first-child {
+.outputs .display.arrows > *:first-child,
+.outputs .display.arrows > *:last-child {
 	display: inline-block; /* ensures transform doesn't collapse layout */
 	transform: rotate(90deg);
 	transform-origin: center;
 	-webkit-transform: rotate(90deg);
-	-webkit-transform-origin: center;
-}
-
-.outputs .display.arrows > *:last-child {
-	display: inline-block; /* ensures transform doesn't collapse layout */
-	transform: rotate(-90deg);
-	transform-origin: center;
-	-webkit-transform: rotate(-90deg);
 	-webkit-transform-origin: center;
 }
 
