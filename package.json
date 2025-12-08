@@ -1,0 +1,25 @@
+{
+  "name": "time-sqd-co",
+  "version": "1.0.0",
+  "description": "A single page application to calculate time differences between dates.",
+  "main": "src/main.tsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^1.0.0",
+    "typescript": "^4.0.0",
+    "vite": "^2.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
