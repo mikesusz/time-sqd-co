@@ -93,7 +93,7 @@ textarea {
 	/* place arrow elements side-by-side and undo small-screen rotation */
 	.outputs .display.arrows {
 		flex-direction: row;
-		text-wrap-mode: nowrap;
+		white-space: nowrap;
 	}
 
 	.outputs .display.arrows > *:first-child,
