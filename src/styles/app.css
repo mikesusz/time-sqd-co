@@ -15,6 +15,9 @@ body {
 	font-size: 1rem;
 	margin: 0;
 	padding: 20px;
+	/* use system colors for light/dark mode support */
+	background-color: Canvas;
+	color: CanvasText;
 }
 
 main {
@@ -106,4 +109,61 @@ textarea {
 	.formattedDate {
 		font-size: 1.4rem;
 	}
+}
+
+/* Instructions section - minimal styling */
+.instructions {
+	margin-top: 48px;
+	padding-top: 32px;
+	border-top: 1px solid currentColor;
+	opacity: 0.8;
+}
+
+.instructions h2 {
+	font-size: 1.2rem;
+	margin-top: 0;
+}
+
+.instructions h3 {
+	font-size: 1rem;
+	margin-top: 24px;
+	margin-bottom: 8px;
+}
+
+.instructions p {
+	line-height: 1.6;
+}
+
+.instructions .examples {
+	list-style: none;
+	padding: 0;
+	margin: 12px 0;
+}
+
+.instructions .examples li {
+	margin: 8px 0;
+}
+
+.instructions .examples a {
+	color: LinkText;
+	text-decoration: underline;
+}
+
+.instructions .examples a:visited {
+	color: VisitedText;
+}
+
+.instructions .examples a:hover {
+	opacity: 0.8;
+}
+
+.instructions .example-description {
+	opacity: 0.7;
+	font-size: 0.9rem;
+}
+
+.instructions .tip {
+	margin-top: 24px;
+	font-size: 0.95rem;
+	opacity: 0.9;
 }
