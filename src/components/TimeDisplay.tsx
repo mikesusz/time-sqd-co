@@ -99,7 +99,10 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 	}
 
 	const timeDifference = Math.abs(currentDate.getTime() - pastDate.getTime());
-	const pastTime = new Date(pastDate.getTime() - timeDifference);
+	const isFutureDate = pastDate.getTime() > currentDate.getTime();
+	const extendedDate = isFutureDate
+		? new Date(pastDate.getTime() + timeDifference)
+		: new Date(pastDate.getTime() - timeDifference);
 
 	// compute integer days and double it
 	const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -107,9 +110,9 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({
 	return (
 		<div className="outputs">
 			<div className="centered">
-				equal days before:
+				{isFutureDate ? 'equal days after:' : 'equal days before:'}
 				<br />
-				<div className="formattedDate">{formatTime(pastTime)}</div>
+				<div className="formattedDate">{formatTime(extendedDate)}</div>
 			</div>
 
 			<div className="layout">
