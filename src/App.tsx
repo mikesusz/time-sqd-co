@@ -7,10 +7,15 @@ const getDateFromURL = (): Date | null => {
 	const dateParam = params.get('date');
 
 	if (dateParam) {
-		const parsedDate = new Date(dateParam);
-		// Check if date is valid
-		if (!isNaN(parsedDate.getTime())) {
-			return parsedDate;
+		// Parse YYYY-MM-DD as local date to avoid timezone shifts
+		const parts = dateParam.split('-').map(Number);
+		if (parts.length === 3 && parts.every((n) => !isNaN(n))) {
+			const [year, month, day] = parts;
+			const localDate = new Date(year, month - 1, day);
+			// Check if date is valid
+			if (!isNaN(localDate.getTime())) {
+				return localDate;
+			}
 		}
 	}
 
