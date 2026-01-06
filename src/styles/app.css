@@ -26,21 +26,12 @@ main {
 }
 
 input[type='date'] {
-	padding: 10px;
-	border-radius: 5px;
-	font-size: 0.8rem;
-}
-
-/* ensure form controls expand to full width and respect padding */
-input[type='date'],
-select,
-button,
-textarea {
 	display: block;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 10px;
 	border-radius: 5px;
+	font-size: 0.8rem;
 }
 
 .outputs {

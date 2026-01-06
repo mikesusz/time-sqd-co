@@ -13,7 +13,7 @@ const exampleDates: ExampleDate[] = [
 		description: 'January 1, 2000',
 	},
 	{
-		label: 'Nirvana\'s Nevermind Released',
+		label: "Nirvana's Nevermind Released",
 		date: '1991-09-24',
 		description: 'September 24, 1991',
 	},
@@ -37,6 +37,21 @@ const exampleDates: ExampleDate[] = [
 		date: '1945-09-02',
 		description: 'September 2, 1945',
 	},
+	{
+		label: 'Signing of the Treaty of Versailles (end of World War I)',
+		date: '1919-06-28',
+		description: 'June 28, 1919',
+	},
+	{
+		label: 'American Civil War Ended',
+		date: '1865-04-09',
+		description: 'April 9, 1865',
+	},
+	{
+		label: 'Adoption of the U.S. Declaration of Independence',
+		date: '1776-07-04',
+		description: 'July 4, 1776',
+	},
 ];
 
 const Instructions: React.FC = () => {
@@ -55,18 +70,15 @@ const Instructions: React.FC = () => {
 		<div className="instructions">
 			<h2>How it works</h2>
 			<p>
-				Enter a date to see how many days have passed between that date and today.
-				The calculator also shows an equal number of days <em>before</em> your chosen date.
+				Enter a date to see how many days have passed between that date and today. The calculator
+				also shows an equal number of days <em>before</em> your chosen date.
 			</p>
 
 			<h3>Try these examples:</h3>
 			<ul className="examples">
 				{exampleDates.map((example) => (
 					<li key={example.date}>
-						<a
-							href={`?date=${example.date}`}
-							onClick={(e) => handleExampleClick(e, example.date)}
-						>
+						<a href={`?date=${example.date}`} onClick={(e) => handleExampleClick(e, example.date)}>
 							{example.label}
 						</a>
 						<span className="example-description"> ({example.description})</span>
@@ -75,8 +87,8 @@ const Instructions: React.FC = () => {
 			</ul>
 
 			<p className="tip">
-				<strong>Tip:</strong> Enter your birthday, anniversary, or any memorable date.
-				You can share the URL to show others your calculation!
+				<strong>Tip:</strong> Enter your birthday, anniversary, or any memorable date. You can share
+				the URL to show others your calculation!
 			</p>
 		</div>
 	);
